@@ -21,7 +21,7 @@
         nav {
             position: fixed;
             top: 0;
-            width: calc(100% - 20px); /* Added space to prevent overlap with scrollbar */
+            width: 100%;
             z-index: 100;
             display: flex;
             justify-content: space-between;
@@ -156,12 +156,6 @@
             color: #fff;
         }
 
-        .section-content p {
-            padding: 0 20px; /* Add padding to paragraphs for better readability */
-            max-width: 800px; /* Limit line length */
-            margin: 0 auto;
-        }
-
         .play-trailer-button {
             display: inline-block;
             margin-top: 20px;
@@ -215,13 +209,161 @@
             margin: 5px 0;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('nav');
+            const hamburger = document.querySelector('.hamburger');
+            const mobileNav = document.querySelector('.mobile-nav');
+
+            // Adjust nav transparency on scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    nav.classList.remove('transparent');
+                } else {
+                    nav.classList.add('transparent');
+                }
+            });
+
+            // Mobile navigation toggle
+            hamburger.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+            });
+
+            // Smooth scroll functionality for arrows
+            document.querySelectorAll('.scroll-arrow').forEach(arrow => {
+                arrow.addEventListener('click', () => {
+                    const nextSection = arrow.closest('.section').nextElementSibling;
+                    if (nextSection) {
+                        nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 <body>
-    <!-- Content here -->
+
+    <!-- Navigation -->
+    <nav class="transparent">
+        <div class="logo">Cherimoya Pictures</div>
+        <div class="hamburger">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <ul>
+            <li><a href="#wildfire">Projects</a></li>
+            <li><a href="#about">About Cherimoya</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="mobile-nav">
+            <a href="#wildfire">Projects</a>
+            <a href="#about">About Cherimoya</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="section">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/PntjE53dTw2cZppxOFYP_header.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h1>Cherimoya Pictures</h1>
+            <p>Imaginative stories that explore the profound connections between humanity, nature, and culture.</p>
+          
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- Wildfire Section -->
+    <div class="section" id="wildfire">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/xeF0ZA59RlSqoymqoyYY_fire.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>IMAX Wildfire Documentary</h2>
+            <p>Experience the power of Wildfires and explore the extraordinary human efforts and technological advancements of the next generation.</p>
+            <a href="#" class="play-trailer-button">Trailer oming Soon</a>
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- Symphony Section -->
+    <div class="section" id="symphony">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/xxIJH4TRt6NKcK2aalwc_orhcestral.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>IMAX Symphony Orchestra Documentary</h2>
+            <p>Feel the movement of music in the most storied and spectacular symphony orchestras from around the world.</p>
+            <a href="#" class="play-trailer-button">Trailer Coming Soon</a>
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- Weather Women Section -->
+    <div class="section" id="weather-women">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/mWLlLiGrQm2VuxfHKT5Z_ww.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>Weather Women</h2>
+            <p>Follow the bravest women in weather as a group of female storm chasers risk it all for the perfect storm.</p>
+            <a href="#" class="play-trailer-button">Play Trailer</a>
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- Biodiversity Section -->
+    <div class="section" id="biodiverse">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/3me6tXRHRrOnaGerwCTU_most-bio.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>The Most Biodiverse Place in America</h2>
+            <p>One county in America is the most biodiverse as it spans from the Pacific Ocean, through rare chaparral, over vast mountains, and into the hot, dry desert.</p>
+            <a href="#" class="play-trailer-button">Play Trailer</a>
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- About Section -->
+    <div class="section" id="about">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/hchEuUC1TyWYnkNbn4Jq_about.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>About Cherimoya Pictures</h2>
+            <p>Cherimoya Pictures and Executive Producer John Fiske share imaginative stories with impact, highlighting the unique and varied human experiences with nature, society, and culture.</p>
+         
+        </div>
+        <div class="scroll-arrow">⬇</div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="section" id="contact">
+        <video autoplay muted loop>
+            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/LsyGrSbcRwKhvjROYulg_cherimoya.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="section-content">
+            <h2>Contact Us</h2>
+            <p>If you have a story to tell or a vision to share, reach out to us at <a href="mailto:CherimoyaPictures@gmail.com">CherimoyaPictures@gmail.com</a>.</p>
+           
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 Cherimoya Pictures. All rights reserved.</p>
     </footer>
+
 </body>
 </html>
