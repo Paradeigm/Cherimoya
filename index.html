@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +13,7 @@
             padding: 0;
             font-family: 'Playfair Display', serif;
             color: #333;
-            background-color: blakc;
+            background-color: black;
             scroll-behavior: smooth;
         }
 
@@ -20,43 +21,18 @@
         nav {
             position: fixed;
             top: 0;
-            width: 100%;
+            width: calc(100% - 20px); /* Added space to prevent overlap with scrollbar */
             z-index: 100;
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            transition: background 0.3s ease;
+            transition: background-color 0.3s ease;
+            background: rgba(0, 0, 0, 0.3); /* Transparent background by default */
         }
-        
-        /* Contact Button Styling */
-nav ul li a[href="#contact"] {
-    border: 2px solid #ffd700; /* Gold border */
-    padding: 5px 10px; /* Add padding inside the button */
-    border-radius: 5px; /* Rounded corners for a modern look */
-    color: #ffd700; /* Gold text */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effects */
-}
-
-nav ul li a[href="#contact"]:hover {
-    background-color: #ffd700; /* Gold background on hover */
-    color: #000; /* Black text on hover */
-}
-
 
         nav.transparent {
-            background: none;
-        }
-
-        nav.scrolled {
-            background: rgba(0, 0, 0, 0.3);
-        }
-
-        nav .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
+            background: none; /* Fully transparent for initial state */
         }
 
         nav ul {
@@ -84,12 +60,32 @@ nav ul li a[href="#contact"]:hover {
             color: #ffd700;
         }
 
-        /* Hamburger Menu */
+        nav ul li a[href="#contact"] {
+            border: 2px solid #ffd700;
+            padding: 5px 10px;
+            border-radius: 5px;
+            color: #ffd700;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        nav ul li a[href="#contact"]:hover {
+            background-color: #ffd700;
+            color: #000;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        /* Mobile Navigation */
         .hamburger {
             display: none;
-            cursor: pointer;
             flex-direction: column;
             gap: 5px;
+            cursor: pointer;
         }
 
         .hamburger div {
@@ -129,236 +125,101 @@ nav ul li a[href="#contact"]:hover {
                 display: flex;
             }
 
-            .mobile-nav {
-                display: none;
-            }
-
             .mobile-nav.active {
                 display: flex;
             }
         }
 
-        /* Fullscreen Sections */
-.section {
-    position: relative;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.section::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Black layer with 40% opacity */
-    z-index: 1; /* Stays above the video but below the text */
-}
-
-.section video {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    z-index: 0; /* Keeps the video behind the black layer */
-}
-
-.section-content {
-    position: relative;
-    z-index: 2; /* Ensures the text stays above the black layer */
-    text-align: center;
-    color: #fff;
-}
-
-
-        .section-content h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            margin: 0;
+        .section {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
         }
 
-        .section-content h2 {
-            font-family: 'Work Sans', sans-serif;
-            font-weight: 700;
-            font-size: 3rem;
-            margin: 0;
-            padding: 10px 0;
+        .section video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
         }
-        
-        .section-content h2 + h3 {
-    margin-top: 1px; /* Adjust the spacing as needed */
-}
 
+        .section-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: #fff;
+        }
 
-.section-content p {
-    font-family: 'Work Sans', sans-serif;
-    font-weight: 400;
-    font-size: 1rem;
-    margin: 0 auto;
-    padding: 10px 20px; /* Add padding for space around the paragraph */
-    max-width: 800px; /* Limit width to control line length */
-}
+        .section-content p {
+            padding: 0 20px; /* Add padding to paragraphs for better readability */
+            max-width: 800px; /* Limit line length */
+            margin: 0 auto;
+        }
 
-
-        .section-content a {
+        .play-trailer-button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: 2px solid #ffd700;
+            border-radius: 5px;
             color: #ffd700;
+            text-transform: uppercase;
             text-decoration: none;
+            font-family: 'Work Sans', sans-serif;
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-    footer {
-    background-color: #2E8B57; /* Cherimoya Green */
-    color: white;
-    text-align: center;
-    padding: 20px 10%;
-}
+        .play-trailer-button:hover {
+            background-color: #ffd700;
+            color: #000;
+        }
 
+        .scroll-arrow {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #ffd700;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2E8B57; /* Cherimoya Green */
+            color: white;
+            text-align: center;
+            padding: 20px 10%;
+            font-family: 'Work Sans', sans-serif;
+        }
 
         footer p {
             margin: 5px 0;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const nav = document.querySelector('nav');
-            const hamburger = document.querySelector('.hamburger');
-            const mobileNav = document.querySelector('.mobile-nav');
-
-            // Hamburger menu toggle
-            hamburger.addEventListener('click', () => {
-                mobileNav.classList.toggle('active');
-            });
-
-            // Change nav background on scroll
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    nav.classList.remove('transparent');
-                    nav.classList.add('scrolled');
-                } else {
-                    nav.classList.remove('scrolled');
-                    nav.classList.add('transparent');
-                }
-            });
-
-            // Set initial state
-            nav.classList.add('transparent');
-        });
-    </script>
 </head>
 <body>
+    <!-- Content here -->
 
-  <!-- Navigation -->
-    <nav>
-        <div class="logo">Cherimoya Pictures</div>
-        <div class="hamburger">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-        <ul>
-            <li><a href="#wildfire">Projects</a></li>
-            <li><a href="#about">About Cherimoya</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <div class="mobile-nav">
-            <a href="#wildfire">Projects</a>
-            <a href="#about">About Cherimoya</a>
-            <a href="#contact">Contact</a>
-        </div>
-    </nav>
-
-    <!-- Hero Section with Background Video -->
-    <div class="section">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/LsyGrSbcRwKhvjROYulg_cherimoya.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h1>Cherimoya Pictures</h1>
-            <p>Imaginative stories that explore the profound connections between humanity, nature, and culture.</p>
-        </div>
-    </div>
-
-    <!-- Project Sections -->
-    <div class="section" id="wildfire">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/xeF0ZA59RlSqoymqoyYY_fire.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>IMAX WILDFIRE DOCUMENTARY</h2>
-            <p>Experience the power of Wildfires and explore the extraordinary human efforts and technological advancements of the next generation.</p>
-        </div>
-    </div>
-
-    <div class="section" id="symphony">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/xxIJH4TRt6NKcK2aalwc_orhcestral.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>IMAX SYMPHONY ORCHESTRA DOCUMENTARY</h2>
-            <p>Feel the movement of music in the most storied and spectacular symphony orchestras from around the world.</p>
-        </div>
-    </div>
-
-    <div class="section" id="weather-women">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/mWLlLiGrQm2VuxfHKT5Z_ww.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>WEATHER WOMEN </h2>
-<h3>
-In partnership with Paradeigm Films
-</h3>
-            <p>Follow the bravest women in weather as a group of female storm chasers risk it all for the perfect storm.</p>
-        </div>
-    </div>
-
-    <div class="section" id="biodiverse">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/3me6tXRHRrOnaGerwCTU_most-bio.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>THE MOST BIODIVERSE PLACE IN AMERICA</h2>
-            <h3>
-A Cherimoya Pictures production, in association with Paradeigm Films
-</h3>
-            <p>One county in America is the most biodiverse as it spans from the Pacific Ocean, through rare chaparral, over vast mountains, and into the hot, dry desert.</p>
-        </div>
-    </div>
-
-    <!-- About Section -->
-    <div class="section" id="about">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/hchEuUC1TyWYnkNbn4Jq_about.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>About Cherimoya Pictures</h2>
-            <p>"Cherimoya Pictures and Executive Producer John Fiske share imaginative stories with impact, highlighting the unique and varied human experiences with nature, society, and culture."</p>
-        </div>
-    </div>
-
-    <!-- Contact Section -->
-    <div class="section" id="contact">
-        <video autoplay muted loop>
-            <source src="https://s3-us-west-1.amazonaws.com/paradeigm-social/LsyGrSbcRwKhvjROYulg_cherimoya.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="section-content">
-            <h2>Contact Us</h2>
-            <p>If you have a story to tell or a vision to share, reach out to us at <a href="mailto:CherimoyaPictures@gmail.com">CherimoyaPictures@gmail.com</a>.</p>
-        </div>
-    </div>
-
+    <!-- Footer -->
     <footer>
         <p>&copy; 2024 Cherimoya Pictures. All rights reserved.</p>
     </footer>
